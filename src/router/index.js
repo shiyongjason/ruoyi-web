@@ -87,7 +87,90 @@ export const constantRoutes = [
         meta: { title: '个人中心', icon: 'user' }
       }
     ]
-  }
+  },
+  {
+    name: "System",
+    path: "/system",
+    component: Layout,
+    alwaysShow: true,
+    hidden: false,
+    meta: {
+      title: "系统管理",
+      icon: "system",
+    },
+    children: [
+      {
+        name: "User",
+        path: "user",
+        hidden: false,
+        component: () => import('@/views/system/user/index'),
+        meta: {
+          "title": "用户管理",
+          "icon": "user",
+        }
+      },
+      {
+        name: "Role",
+        path: "role",
+        hidden: false,
+        component: () => import('@/views/system/role/index'),
+        "meta": {
+          "title": "角色管理",
+          "icon": "peoples",
+          "noCache": false,
+          "link": null
+        }
+      },
+      // {
+      //   "name": "Menu",
+      //   "path": "menu",
+      //   "hidden": false,
+      //   "component": "system/menu/index",
+      //   "meta": {
+      //     "title": "菜单管理",
+      //     "icon": "tree-table",
+      //     "noCache": false,
+      //     "link": null
+      //   }
+      // },
+      // {
+      //   "name": "Dept",
+      //   "path": "dept",
+      //   "hidden": false,
+      //   "component": "system/dept/index",
+      //   "meta": {
+      //     "title": "部门管理",
+      //     "icon": "tree",
+      //     "noCache": false,
+      //     "link": null
+      //   }
+      // },
+      // {
+      //   "name": "Post",
+      //   "path": "post",
+      //   "hidden": false,
+      //   "component": "system/post/index",
+      //   "meta": {
+      //     "title": "岗位管理",
+      //     "icon": "post",
+      //     "noCache": false,
+      //     "link": null
+      //   }
+      // },
+      // {
+      //   "name": "Dict",
+      //   "path": "dict",
+      //   "hidden": false,
+      //   "component": "system/dict/index",
+      //   "meta": {
+      //     "title": "字典管理",
+      //     "icon": "dict",
+      //     "noCache": false,
+      //     "link": null
+      //   }
+      // },
+    ]
+  },
 ]
 
 // 动态路由，基于用户权限动态去加载
@@ -161,12 +244,14 @@ export const dynamicRoutes = [
         meta: { title: '修改生成配置', activeMenu: '/tool/gen' }
       }
     ]
-  }
+  },
+  //
+
 ]
 
 // 防止连续点击多次路由报错
 let routerPush = Router.prototype.push;
-Router.prototype.push = function push(location) {
+Router.prototype.push = function push (location) {
   return routerPush.call(this, location).catch(err => err)
 }
 

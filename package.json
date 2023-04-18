@@ -1,7 +1,7 @@
 {
   "name": "ruoyi-vue-web",
   "version": "3.8.3",
-  "description": "若依MybatisPlus纯净版",
+  "description": "web纯净版",
   "author": "Tellsea",
   "license": "MIT",
   "scripts": {

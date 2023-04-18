@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: '若依MybatisPlus纯净版',
+      title: 'web纯净版',
       logo: logoImg
     }
   }
